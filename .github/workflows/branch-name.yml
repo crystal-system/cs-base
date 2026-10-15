@@ -1,0 +1,6 @@
+name: Branch naming
+on: [pull_request]
+
+jobs:
+  check:
+    uses: crystal-system/conventions/.github/workflows/branch-name.yml@main
