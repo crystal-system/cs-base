@@ -1,0 +1,1 @@
+npx lint-staged --config @cs-base/nx-plugin/src/.lintstagedrc.json

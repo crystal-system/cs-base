@@ -1,0 +1,35 @@
+{
+  "name": "@cs-base/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "nx": "nx",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "lint": "nx run-many -t lint",
+    "prepare": "husky"
+  },
+  "prettier": "@cs-base/nx-plugin/src/.prettierrc.json",
+  "devDependencies": {
+    "@nx/jest": "^23.3.0",
+    "@nx/js": "21.4.1",
+    "@nx/rollup": "^21.4.1",
+    "@swc/core": "^1.16.18",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.5",
+    "husky": "^9.1.7",
+    "jest": "^30.5.2",
+    "lint-staged": "^15.5.0",
+    "nx": "21.4.1",
+    "ts-jest": "^29.4.14",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9.3"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}
