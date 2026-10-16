@@ -4,6 +4,7 @@ import type {
   CreateNodesV2,
   CreateNodesResultV2,
 } from 'nx/src/project-graph/plugins/public-api';
+import { locatePackage } from './package-location';
 
 type CreateNodesResultV2Tuple = CreateNodesResultV2[number];
 
@@ -15,8 +16,8 @@ export const LIB_TAGS = [
 
 type LibTag = (typeof LIB_TAGS)[number];
 
-const packageRoot = path.resolve(__dirname, '..', '..');
-const libraryJestConfig = path.join(packageRoot, 'src', 'jest.config.ts');
+const pkg = locatePackage(__dirname);
+const libraryJestConfig = pkg.jestConfig();
 
 const FORMATS: Record<LibTag, string[]> = {
   'cs-type:cjs-lib': ['cjs'],
@@ -37,7 +38,7 @@ export const createNodesV2: CreateNodesV2 = [
   '**/project.json',
   async (configFilePaths, _options, context) => {
     const tsconfigPresetsGlob = path
-      .relative(context.workspaceRoot, packageRoot)
+      .relative(context.workspaceRoot, pkg.configRoot)
       .split(path.sep)
       .join('/');
     const results: CreateNodesResultV2Tuple[] = [];
@@ -90,7 +91,7 @@ export const createNodesV2: CreateNodesV2 = [
                     inputs: [
                       'default',
                       '^production',
-                      `{workspaceRoot}/${tsconfigPresetsGlob}/src/tsconfig/**/*`,
+                      `{workspaceRoot}/${tsconfigPresetsGlob}/tsconfig/**/*`,
                     ],
                     outputs: ['{options.outputPath}'],
                     options: {

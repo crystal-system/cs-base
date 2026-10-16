@@ -1,11 +1,23 @@
 {
   "name": "@cs-base/nx-plugin",
   "version": "0.0.1",
-  "private": true,
   "type": "commonjs",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {
     "prettier": "^3.6.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crystal-system/cs-base.git",
+    "directory": "packages/nx-plugin"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md"
+  ]
 }

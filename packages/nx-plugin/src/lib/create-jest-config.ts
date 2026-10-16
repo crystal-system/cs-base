@@ -1,7 +1,8 @@
 import * as path from 'node:path';
 import type { Config } from 'jest';
+import { locatePackage } from './package-location';
 
-const packageRoot = path.resolve(__dirname, '..', '..');
+const pkg = locatePackage(__dirname);
 
 /**
  * Builds the Jest configuration of a library tagged cs-type:lib,
@@ -11,7 +12,7 @@ export function createConfig(
   projectName: string,
   projectRoot: string,
   workspaceRoot: string,
-  presetPath = path.join(packageRoot, 'src', 'jest.preset.js'),
+  presetPath = pkg.resolve('jest.preset.js'),
 ): Config {
   return {
     displayName: projectName,
