@@ -1,0 +1,35 @@
+name: Publish
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+      - run: npm ci
+      - run: npx nx run nx-plugin:build
+      - name: Assemble publishable package
+        run: |
+          mkdir -p publish-output/src
+          cp -r dist/packages/nx-plugin/* publish-output/
+          cp -r packages/nx-plugin/src publish-output/
+          rm -rf publish-output/src/lib
+          rm -f publish-output/src/jest.config.ts
+          npx tsc packages/nx-plugin/src/jest.config.ts \
+            --module commonjs --target es2022 \
+            --outDir publish-output/src
+          node ./scripts/patch-published-package.js publish-output
+      - run: npm publish publish-output
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

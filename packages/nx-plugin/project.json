@@ -1,0 +1,8 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nx-schemas/nx/main/project-schema.json",
+  "name": "nx-plugin",
+  "projectType": "library",
+  "sourceRoot": "packages/nx-plugin/src",
+  "prefix": "nx-plugin",
+  "tags": ["cs-type:cjs-lib"]
+}

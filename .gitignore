@@ -1,0 +1,20 @@
+# Build outputs
+dist/
+dist-test/
+coverage/
+tmp/
+out/
+
+# Dependencies
+node_modules/
+
+# Nx cache
+.nx/cache
+.nx/workspace-data
+
+# Logs
+*.log
+
+# Editor
+.idea/
+.vscode/
