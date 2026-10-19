@@ -6,6 +6,11 @@
   "prefix": "nx-plugin",
   "tags": ["cs-type:cjs-lib"],
   "targets": {
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
+    },
     "build": {
       "options": {
         "additionalEntryPoints": ["packages/nx-plugin/src/jest.config.ts"],
