@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "type": "commonjs",
   "main": "src/index.ts",
-  "types": "src/index.ts",
   "dependencies": {
     "prettier": "^3.6.2"
   },
@@ -14,10 +13,5 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
-  },
-  "files": [
-    "src",
-    "dist",
-    "README.md"
-  ]
+  }
 }

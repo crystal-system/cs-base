@@ -29,10 +29,13 @@ export function locatePackage(fromDir: string): PackageLocation {
           resolve: (...segments: string[]) =>
             path.join(configRoot, ...segments),
           jestConfig: () => {
-            const js = path.join(configRoot, 'jest.config.js');
-            return fs.existsSync(js)
-              ? js
-              : path.join(configRoot, 'jest.config.ts');
+            for (const name of ['jest.config.js', 'jest.config.cjs.js']) {
+              const candidate = path.join(configRoot, name);
+              if (fs.existsSync(candidate)) {
+                return candidate;
+              }
+            }
+            return path.join(configRoot, 'jest.config.ts');
           },
         };
       }

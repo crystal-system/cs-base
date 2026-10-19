@@ -1,3 +1,3 @@
-const { workspaceJestConfig } = require('./lib/workspace-jest-config.ts');
+import { workspaceJestConfig } from './lib/workspace-jest-config';
 
-module.exports = workspaceJestConfig;
+export default workspaceJestConfig;
