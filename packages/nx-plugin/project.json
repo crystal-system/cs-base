@@ -19,6 +19,21 @@
             "glob": "jest.preset.js",
             "input": "packages/nx-plugin/src",
             "output": "."
+          },
+          {
+            "glob": ".prettierrc.json",
+            "input": "packages/nx-plugin/src",
+            "output": "."
+          },
+          {
+            "glob": ".lintstagedrc.json",
+            "input": "packages/nx-plugin/src",
+            "output": "."
+          },
+          {
+            "glob": "tsconfig/**/*",
+            "input": "packages/nx-plugin/src",
+            "output": "."
           }
         ]
       }
