@@ -37,10 +37,6 @@ function libTagOf(tags: string[]): LibTag | undefined {
 export const createNodesV2: CreateNodesV2 = [
   '**/project.json',
   async (configFilePaths, _options, context) => {
-    const tsconfigPresetsGlob = path
-      .relative(context.workspaceRoot, pkg.configRoot)
-      .split(path.sep)
-      .join('/');
     const results: CreateNodesResultV2Tuple[] = [];
 
     await Promise.all(
@@ -74,25 +70,20 @@ export const createNodesV2: CreateNodesV2 = [
             projects: {
               [projectRoot]: {
                 namedInputs: {
-                  default: ['{projectRoot}/**/*', 'sharedGlobals'],
+                  default: ['{projectRoot}/**/*'],
                   production: [
                     'default',
                     '!{projectRoot}/**/*.test.ts',
                     '!{projectRoot}/tsconfig.spec.json',
                     '!{projectRoot}/test-setup.ts',
                   ],
-                  sharedGlobals: [],
                 },
                 targets: {
                   build: {
                     executor: '@nx/rollup:rollup',
                     dependsOn: ['^build'],
                     cache: true,
-                    inputs: [
-                      'default',
-                      '^production',
-                      `{workspaceRoot}/${tsconfigPresetsGlob}/tsconfig/**/*`,
-                    ],
+                    inputs: ['default', '^production'],
                     outputs: ['{options.outputPath}'],
                     options: {
                       outputPath: `{workspaceRoot}/dist/${projectRoot}`,
