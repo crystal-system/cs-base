@@ -68,31 +68,6 @@ export const createNodesV2: CreateNodesV2 = [
           ? projectJestConfig
           : libraryJestConfig;
 
-        const additionalEntryPoints: string[] = [];
-        const assets: { glob: string; input: string; output: string }[] = [];
-        const bundledJestConfig = path.join(
-          context.workspaceRoot,
-          projectRoot,
-          'src',
-          'jest.config.ts',
-        );
-        if (fs.existsSync(bundledJestConfig)) {
-          additionalEntryPoints.push(`${projectRoot}/src/jest.config.ts`);
-        }
-        const jestPreset = path.join(
-          context.workspaceRoot,
-          projectRoot,
-          'src',
-          'jest.preset.js',
-        );
-        if (fs.existsSync(jestPreset)) {
-          assets.push({
-            glob: 'jest.preset.js',
-            input: `${projectRoot}/src`,
-            output: '.',
-          });
-        }
-
         results.push([
           configFilePath,
           {
@@ -128,10 +103,6 @@ export const createNodesV2: CreateNodesV2 = [
                       generateExportsField: true,
                       compiler: 'swc',
                       useLegacyTypescriptPlugin: false,
-                      ...(additionalEntryPoints.length > 0
-                        ? { additionalEntryPoints }
-                        : {}),
-                      ...(assets.length > 0 ? { assets } : {}),
                     },
                   },
                   lint: {

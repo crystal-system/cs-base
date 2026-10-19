@@ -4,5 +4,19 @@
   "projectType": "library",
   "sourceRoot": "packages/nx-plugin/src",
   "prefix": "nx-plugin",
-  "tags": ["cs-type:cjs-lib"]
+  "tags": ["cs-type:cjs-lib"],
+  "targets": {
+    "build": {
+      "options": {
+        "additionalEntryPoints": ["packages/nx-plugin/src/jest.config.ts"],
+        "assets": [
+          {
+            "glob": "jest.preset.js",
+            "input": "packages/nx-plugin/src",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
 }
