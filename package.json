@@ -8,7 +8,9 @@
     "build": "nx run-many -t build",
     "test": "nx run-many -t test",
     "lint": "nx run-many -t lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "skills add crystal-system/conventions -y -a '*' || true",
+    "update-skills": "skills update -y"
   },
   "prettier": "@cs-base/nx-plugin/src/.prettierrc.json",
   "devDependencies": {
@@ -22,6 +24,7 @@
     "jest": "^30.5.2",
     "lint-staged": "^15.5.0",
     "nx": "21.4.1",
+    "skills": "^1.7.4",
     "ts-jest": "^29.4.14",
     "ts-node": "^10.9.2",
     "typescript": "5.9.3"

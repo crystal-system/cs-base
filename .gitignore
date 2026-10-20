@@ -18,3 +18,9 @@ node_modules/
 # Editor
 .idea/
 .vscode/
+
+# Agent skills installed by the skills CLI
+.agent/
+.agents/
+.claude/
+agent/
