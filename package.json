@@ -9,8 +9,8 @@
     "test": "nx run-many -t test",
     "lint": "nx run-many -t lint",
     "prepare": "husky",
-    "postinstall": "skills add crystal-system/conventions -y -a '*' || true",
-    "update-skills": "skills update -y"
+    "postinstall": "node scripts/sync-skills.js",
+    "update-skills": "node scripts/sync-skills.js"
   },
   "prettier": "@cs-base/nx-plugin/src/.prettierrc.json",
   "devDependencies": {

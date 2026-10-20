@@ -20,7 +20,7 @@ node_modules/
 .vscode/
 
 # Agent skills installed by the skills CLI
-.agent/
-.agents/
-.claude/
-agent/
+.agent/skills/
+.agents/skills/
+.claude/skills/
+agent/skills/
