@@ -1,0 +1,20 @@
+{
+  "name": "@cs-base/skills",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "src/index.ts",
+  "bin": {
+    "cs-sync-skills": "./bin.cjs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crystal-system/cs-base.git",
+    "directory": "packages/skills"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "skills": "^1.7.4"
+  }
+}

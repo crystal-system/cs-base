@@ -18,7 +18,11 @@ jobs:
           cache: npm
           registry-url: https://npm.pkg.github.com
       - run: npm ci
-      - run: npx nx run nx-plugin:build
+      - run: npx nx run-many -t build
+      - run: chmod +x dist/packages/skills/bin.cjs.js
       - run: npm publish dist/packages/nx-plugin
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm publish dist/packages/skills
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nx-schemas/nx/main/project-schema.json",
+  "name": "skills",
+  "projectType": "library",
+  "sourceRoot": "packages/skills/src",
+  "prefix": "skills",
+  "tags": ["cs-type:cjs-lib"],
+  "targets": {
+    "build": {
+      "options": {
+        "additionalEntryPoints": ["packages/skills/src/bin.ts"],
+        "outputFileName": "index"
+      }
+    }
+  }
+}
