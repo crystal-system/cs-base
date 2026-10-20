@@ -9,7 +9,7 @@
     "test": "nx run-many -t test",
     "lint": "nx run-many -t lint",
     "prepare": "husky",
-    "postinstall": "ts-node packages/skills/src/bin.ts crystal-system/conventions || true",
+    "postinstall": "npm run update-skills",
     "update-skills": "ts-node packages/skills/src/bin.ts crystal-system/conventions || true"
   },
   "prettier": "@cs-base/nx-plugin/src/.prettierrc.json",

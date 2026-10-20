@@ -4,7 +4,7 @@
   "type": "commonjs",
   "main": "src/index.ts",
   "bin": {
-    "cs-sync-skills": "./bin.cjs.js"
+    "cs-skills": "./bin.cjs.js"
   },
   "repository": {
     "type": "git",
