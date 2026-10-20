@@ -1,0 +1,5 @@
+{
+  "extends": "@cs-base/nx-plugin/src/tsconfig/tsconfig.lib.json",
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.ts", "src/**/*.spec.ts"]
+}

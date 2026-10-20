@@ -1,0 +1,26 @@
+# Build outputs
+dist/
+dist-test/
+coverage/
+tmp/
+out/
+
+# Dependencies
+node_modules/
+
+# Nx cache
+.nx/cache
+.nx/workspace-data
+
+# Logs
+*.log
+
+# Editor
+.idea/
+.vscode/
+
+# Agent skills installed by the skills CLI
+.agent/skills/
+.agents/skills/
+.claude/skills/
+agent/skills/

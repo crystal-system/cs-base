@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nx-schemas/nx/main/project-schema.json",
+  "name": "nx-plugin",
+  "projectType": "library",
+  "sourceRoot": "packages/nx-plugin/src",
+  "prefix": "nx-plugin",
+  "tags": ["cs-type:cjs-lib"],
+  "targets": {
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "options": {
+        "additionalEntryPoints": ["packages/nx-plugin/src/jest.config.ts"],
+        "assets": [
+          {
+            "glob": "jest.preset.js",
+            "input": "packages/nx-plugin/src",
+            "output": "."
+          },
+          {
+            "glob": ".prettierrc.json",
+            "input": "packages/nx-plugin/src",
+            "output": "."
+          },
+          {
+            "glob": ".lintstagedrc.json",
+            "input": "packages/nx-plugin/src",
+            "output": "."
+          },
+          {
+            "glob": "tsconfig/**/*",
+            "input": "packages/nx-plugin/src",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

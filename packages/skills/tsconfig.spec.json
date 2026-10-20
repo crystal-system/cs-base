@@ -1,0 +1,4 @@
+{
+  "extends": "@cs-base/nx-plugin/src/tsconfig/tsconfig.spec.json",
+  "include": ["src/**/*.ts"]
+}

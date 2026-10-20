@@ -1,0 +1,13 @@
+{
+  "sources": [
+    {
+      "repository": "crystal-system/conventions"
+    },
+    {
+      "repository": "./.cs/skills"
+    },
+    {
+      "repository": "./skills"
+    }
+  ]
+}

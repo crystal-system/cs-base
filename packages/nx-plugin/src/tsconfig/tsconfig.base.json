@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nx-schemas/nx/main/tsconfig-schema.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "commonjs",
+    "lib": ["es2022"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "types": ["node"]
+  }
+}

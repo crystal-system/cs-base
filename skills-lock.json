@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "cs-commit-msg": {
+      "source": "crystal-system/conventions",
+      "sourceType": "github",
+      "skillPath": "skills/cs-commit-msg/SKILL.md",
+      "computedHash": "dc5f15848f0a48e530e5e60d2b9d546bce2e328c699b89b1b67b42257719f594"
+    }
+  }
+}

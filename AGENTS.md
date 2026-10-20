@@ -5,3 +5,6 @@ contributor would. The rules are defined in
 [crystal-system/conventions](https://github.com/crystal-system/conventions/blob/main/CONTRIBUTING.md),
 with additional agent guidance in its
 [AGENTS.md](https://github.com/crystal-system/conventions/blob/main/AGENTS.md).
+
+Agent skills are installed in `.agents/skills`. Check the installed
+skills and follow them for the tasks they cover.
