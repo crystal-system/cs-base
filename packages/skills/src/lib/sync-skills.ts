@@ -90,12 +90,20 @@ async function listSourceSkills(
   repository: string,
   cwd: string,
 ): Promise<string[] | null> {
+  let output: string;
   try {
-    return parseListedSkills(await runSkills(['add', repository, '-l'], cwd));
-  } catch (err) {
-    const output = (err as { stdout?: string }).stdout;
-    return output ? parseListedSkills(output) : null;
+    output = await runSkills(['add', repository, '-l'], cwd);
+  } catch {
+    return null;
   }
+  const plain = output.replace(/\u001b\[[0-9;]*m/g, '');
+  if (plain.includes('No skills found')) {
+    return [];
+  }
+  if (!plain.includes('Available Skills')) {
+    return null;
+  }
+  return parseListedSkills(output);
 }
 
 function readLockfile(cwd: string): Record<string, LockfileEntry> {
@@ -111,11 +119,12 @@ function readLockfile(cwd: string): Record<string, LockfileEntry> {
 
 /**
  * Reconciles the installed skills with the sources of the .cs/skills.json
- * configuration file. For every source, new skills are created, changed
- * skills are updated and skills that disappeared from the source or from
- * the configured selection are removed. Skills of repositories no longer
- * configured are removed too. Nothing is installed without a configuration
- * file.
+ * configuration file. Sources can be remote repositories or local folders
+ * with a skills directory. For every source, new skills are created,
+ * changed skills are updated and skills that disappeared from the source
+ * or from the configured selection are removed. Skills of sources no
+ * longer configured are removed too. Empty sources are ignored. Nothing
+ * is installed without a configuration file.
  */
 export async function syncSkills(
   options: SyncSkillsOptions = {},
@@ -143,7 +152,7 @@ export async function syncSkills(
     }
 
     const available = await listSourceSkills(source.repository, cwd);
-    if (!available) {
+    if (available === null || available.length === 0) {
       continue;
     }
     const target = source.skills ?? available;

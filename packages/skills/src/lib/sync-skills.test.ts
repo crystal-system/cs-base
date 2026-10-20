@@ -31,6 +31,17 @@ describe('parseListedSkills', () => {
   it('returns an empty list when the output has no section', () => {
     expect(parseListedSkills('some unrelated output')).toEqual([]);
   });
+
+  it('extracts local folder sources the same way', () => {
+    const localOutput = LIST_OUTPUT.replace(
+      'Source: crystal-system/conventions',
+      'Source: /tmp/some/skills-folder',
+    );
+    expect(parseListedSkills(localOutput)).toEqual([
+      'cs-commit-msg',
+      'cs-other-skill',
+    ]);
+  });
 });
 
 describe('readSkillsConfig', () => {
@@ -60,6 +71,7 @@ describe('readSkillsConfig', () => {
             repository: 'crystal-system/other',
             skills: ['cs-one', 'cs-two'],
           },
+          { repository: './skills' },
         ],
       }),
     );
@@ -68,6 +80,7 @@ describe('readSkillsConfig', () => {
       sources: [
         { repository: 'crystal-system/conventions' },
         { repository: 'crystal-system/other', skills: ['cs-one', 'cs-two'] },
+        { repository: './skills' },
       ],
     });
   });
