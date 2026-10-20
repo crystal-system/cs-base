@@ -13,7 +13,10 @@ export interface SkillSource {
 }
 
 export interface SkillsConfig {
-  /** Agents to install for; all detected agents when omitted. */
+  /**
+   * Agents to install for, e.g. `claude-code`. Defaults to the
+   * universal `.agents/skills` directory read by most agents.
+   */
   agents?: string[];
   sources: SkillSource[];
 }
@@ -135,7 +138,7 @@ export async function syncSkills(
     return [];
   }
 
-  const agents = options.agents ?? config.agents ?? ['*'];
+  const agents = options.agents ?? config.agents ?? ['universal'];
   const agentArgs = agents.flatMap((agent) => ['-a', agent]);
   const removed: string[] = [];
 
