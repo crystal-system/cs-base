@@ -1,0 +1,7 @@
+name: Scopes file
+on: [pull_request]
+
+jobs:
+  check:
+    # Point at the conventions branch until it is merged, then use @main
+    uses: crystal-system/conventions/.github/workflows/scopes.yml@t/13-scopes-yaml-schema
