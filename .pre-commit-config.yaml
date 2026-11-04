@@ -1,0 +1,6 @@
+repos:
+  - repo: https://github.com/crystal-system/conventions
+    # Pin to the conventions branch until it is merged, then bump to a tag or main
+    rev: t/13-scopes-yaml-schema
+    hooks:
+      - id: cs-scopes
